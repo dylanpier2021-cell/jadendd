@@ -1,0 +1,10 @@
+# Slifer Farm - https://sliferfarm.com/
+# Replace the domain below if the site is deployed elsewhere.
+
+User-agent: *
+Allow: /
+
+# Working archive of untouched source photos - not for indexing.
+Disallow: /assets/originals/
+
+Sitemap: https://sliferfarm.com/sitemap.xml

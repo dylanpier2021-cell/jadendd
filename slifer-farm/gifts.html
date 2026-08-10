@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2F5233">
+
+<title>Handmade Gifts &amp; Gift Shopping | Slifer Farm, Champaign IL</title>
+<meta name="description" content="Handmade gifts made on our Champaign, Illinois farm. Earrings, luffa soaps, framed photo prints, greeting cards, vanilla extract and raw honey, open daily.">
+<meta name="keywords" content="handmade gifts Champaign IL, local gift shop Champaign, luffa soap Illinois, farm photography prints, homemade vanilla extract, honey gift Champaign, Slifer Farm gifts">
+<meta name="author" content="Slifer Farm">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<link rel="canonical" href="https://sliferfarm.com/gifts.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Slifer Farm">
+<meta property="og:title" content="Handmade Gifts &amp; Gift Shopping | Slifer Farm, Champaign IL">
+<meta property="og:description" content="Earrings, luffa soaps, framed farm photo prints, greeting cards, homemade vanilla extract and raw honey. All made or grown on the farm, on the honor system.">
+<meta property="og:url" content="https://sliferfarm.com/gifts.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sliferfarm.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Handmade gifts on the shelf at the Slifer Farm stand in Champaign, Illinois">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Handmade Gifts from the Farm | Slifer Farm, Champaign IL">
+<meta name="twitter:description" content="Earrings, luffa soaps, framed photo prints, greeting cards, vanilla extract and raw honey. Made or grown right here. Open daily 9 AM to 7 PM.">
+<meta name="twitter:image" content="https://sliferfarm.com/assets/og-image.jpg">
+
+<!-- Geo -->
+<meta name="geo.region" content="US-IL">
+<meta name="geo.placename" content="Champaign, Illinois">
+
+<!-- Favicon: inline SVG egg-on-cream so there is no extra request. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F5233'/%3E%3Cellipse cx='32' cy='34' rx='16' ry='20' fill='%23FAF6EF'/%3E%3Ccircle cx='32' cy='34' r='6' fill='%23E8A93C'/%3E%3C/svg%3E">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+
+<link rel="stylesheet" href="assets/site.css">
+
+<!-- Page-specific rules only. Everything else comes from site.css. -->
+<style>
+  .pagehero{padding-block:clamp(2.75rem,2.2rem + 2.4vw,4.5rem) clamp(5.5rem,4rem + 7vw,8.5rem)}
+  .pagehero h1{font-size:clamp(2.15rem,1.5rem + 2.7vw,3.4rem);margin-bottom:1.1rem}
+  .pagehero .lede{margin-inline:auto}
+  .pagehero__badges{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:1.9rem}
+  .band__actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.85rem;margin-top:2.25rem}
+
+  /* Photo strip. Sources are 206x206, so tiles never exceed 220px. */
+  .shelf-shots{
+    list-style:none;padding:0;margin:2.75rem auto 0;max-width:940px;
+    display:grid;gap:clamp(.75rem,.5rem + 1vw,1.15rem);
+    grid-template-columns:repeat(auto-fit,minmax(150px,220px));
+    justify-content:center;
+  }
+  .shelf-shots li{margin:0}
+  .shelf-shots picture{display:block}
+  .shelf-shots img{
+    width:100%;height:auto;aspect-ratio:1;object-fit:cover;
+    border-radius:var(--radius);border:1px solid var(--line);
+    background:var(--cream-deep);box-shadow:var(--shadow-sm);
+    transition:transform .3s var(--ease),box-shadow .3s var(--ease);
+  }
+  .shelf-shots img:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  @media (prefers-reduced-motion:reduce){.shelf-shots img:hover{transform:none}}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="#top" aria-label="Slifer Farm home">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21c-3.6 0-6-2.6-6-6.2C6 10.4 9.2 3 12 3s6 7.4 6 11.8C18 18.4 15.6 21 12 21Z"/>
+        </svg>
+      </span>
+      <span>Slifer Farm
+        <small>Champaign, IL</small>
+      </span>
+    </a>
+
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+      <span aria-hidden="true"></span>
+    </button>
+
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="index.html#shop">Shop</a>
+      <a href="whats-fresh.html">What&rsquo;s Fresh</a>
+      <a href="gifts.html" aria-current="page">Gifts</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="visit.html">Visit</a>
+      <a class="nav__cta" href="https://www.google.com/maps/dir/?api=1&amp;destination=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">Get Directions</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================================================
+     PAGE HERO
+     ============================================================ -->
+<section class="section section--cream pagehero" id="top">
+  <div class="wrap narrow center reveal">
+    <span class="eyebrow">Handmade Gifts</span>
+    <h1>Handmade Gifts from the Farm</h1>
+    <p class="lede">A shelf of small things made and grown here, tucked inside the stand and out of the weather. Earrings, luffa soaps, framed prints, greeting cards, vanilla extract and honey, all on the same honor system as the eggs.</p>
+
+    <div class="pagehero__badges">
+      <span class="badge badge--open"><span class="dot" aria-hidden="true"></span> Open Daily 9&nbsp;AM &ndash; 7&nbsp;PM</span>
+      <span class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-3.6 0-6-2.6-6-6.2C6 10.4 9.2 3 12 3s6 7.4 6 11.8C18 18.4 15.6 21 12 21Z"/></svg>
+        Made right here on the farm
+      </span>
+    </div>
+  </div>
+
+  <div class="divider divider--bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0 100V44c180 34 360 50 540 34s360-62 540-52 240 44 360 60v14Z" fill="#FFFDF8"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     ON THE GIFT SHELF
+     ============================================================ -->
+<section class="section section--paper" id="shelf">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow">On the Gift Shelf</span>
+      <h2>Made here, sold here</h2>
+      <p class="lede">Nothing on this shelf came off a truck. It is made or grown on the farm, priced on the label, and paid for in the box or from your phone.</p>
+    </div>
+
+    <div class="cards">
+
+      <article class="card reveal">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="15" cy="10" r="3"/>
+            <path d="M15 13c-5 6-7 9-7 13a7 7 0 0 0 14 0c0-4-2-7-7-13Z"/>
+            <circle cx="33" cy="10" r="3"/>
+            <path d="M33 13v6"/>
+            <path d="M33 19l6 8-6 8-6-8Z"/>
+          </svg>
+        </div>
+        <h3>Handmade Earrings</h3>
+        <p>Earrings made by hand here on the farm and set out on the shelf as they are finished. What is there changes as pairs sell, so it is worth a proper look each time you stop.</p>
+        <ul class="tags"><li class="tag">Made by hand</li><li class="tag">One of a kind</li><li class="tag">Easy to mail</li></ul>
+      </article>
+
+      <article class="card reveal" style="--delay:80ms">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="9" width="38" height="30" rx="3"/>
+            <rect x="10" y="14" width="28" height="20" rx="2" opacity=".5"/>
+            <circle cx="18" cy="21" r="2.6"/>
+            <path d="M11 33l7-7 5 5 5-6 9 8"/>
+          </svg>
+        </div>
+        <h3>Framed Photo Prints</h3>
+        <p>Photographs of the farm and the country around it, printed and framed ready to hang. Fields, flowers, hens and the seasons as they turn.</p>
+        <ul class="tags"><li class="tag">Farm &amp; nature photography</li><li class="tag">Framed</li><li class="tag">Ready to hang</li></ul>
+      </article>
+
+      <article class="card reveal" style="--delay:160ms">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="21" width="28" height="18" rx="6"/>
+            <path d="M12 21v18M19 21v18M26 21v18" opacity=".45"/>
+            <path d="M5 27h28M5 33h28" opacity=".45"/>
+            <circle cx="37" cy="13" r="5"/>
+            <circle cx="43" cy="22" r="2.6"/>
+            <circle cx="29" cy="9" r="3"/>
+          </svg>
+        </div>
+        <h3>Luffa Soaps</h3>
+        <p>The luffa is grown in our own patch, dried out and set into the bar, so the sponge and the soap are one piece. They scrub properly and they last a good while.</p>
+        <ul class="tags"><li class="tag">Grown on the farm</li><li class="tag">Year-round</li><li class="tag">Winter staple</li></ul>
+      </article>
+
+      <article class="card reveal" style="--delay:240ms">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="11" y="6" width="26" height="36" rx="3"/>
+            <rect x="16" y="12" width="16" height="12" rx="2"/>
+            <path d="M16 22l4-4 3 3 4-4 5 5"/>
+            <path d="M16 30h16M16 35h10" opacity=".55"/>
+          </svg>
+        </div>
+        <h3>Photo Greeting Cards</h3>
+        <p>Farm photographs made up as greeting cards, ready for birthdays, thank yous and the notes that are much nicer to mail than to text. They stay on the shelf all winter.</p>
+        <ul class="tags"><li class="tag">Farm photographs</li><li class="tag">Winter staple</li><li class="tag">Easy to mail</li></ul>
+      </article>
+
+      <article class="card reveal" style="--delay:320ms">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 5h12"/>
+            <path d="M20 5v8l-4.6 5.2A6 6 0 0 0 14 22.2V37a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6V22.2a6 6 0 0 0-1.4-4L28 13V5"/>
+            <rect x="17" y="25" width="14" height="12" rx="2" opacity=".6"/>
+            <path d="M24 28c-2 2.4-2.6 4.6-1.4 6.6" opacity=".8"/>
+          </svg>
+        </div>
+        <h3>Homemade Vanilla Extract</h3>
+        <p>Made here in the farmhouse in small batches and bottled for the shelf. A quiet favorite with anyone who bakes, and it keeps happily in a cupboard until they need it.</p>
+        <ul class="tags"><li class="tag">Homemade</li><li class="tag">Small batch</li><li class="tag">Year-round</li></ul>
+      </article>
+
+      <article class="card reveal" style="--delay:400ms">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 14h18a3 3 0 0 1 3 3v22a4 4 0 0 1-4 4H16a4 4 0 0 1-4-4V17a3 3 0 0 1 3-3Z"/>
+            <path d="M12 22h24"/>
+            <path d="M24 27l3.4 2v4l-3.4 2-3.4-2v-4l3.4-2Z"/>
+            <path d="M24 14c0-3.2-5.2-4.4-5.2-1.2S24 14 24 14Zm0 0c0-3.2 5.2-4.4 5.2-1.2S24 14 24 14Z"/>
+          </svg>
+        </div>
+        <h3>Raw Honey as a Gift</h3>
+        <p>A jar of honey from our own hives suits very nearly everybody, travels well and needs no explaining. It is on the shelf every month of the year.</p>
+        <ul class="tags"><li class="tag">Our own hives</li><li class="tag">Year-round</li><li class="tag">Travels well</li></ul>
+      </article>
+
+    </div>
+
+    <!-- ============================================================
+         PHOTO STRIP - real photos from the stand. Source files are
+         206x206, so tiles are capped at 220px and never scale up.
+         ============================================================ -->
+    <ul class="shelf-shots reveal" style="--delay:120ms">
+      <li>
+        <picture>
+          <source srcset="assets/gallery-10.webp" type="image/webp">
+          <img src="assets/gallery-10.jpg" alt="Kraft sampler gift boxes tied with pink ribbon on the Slifer Farm gift shelf"
+               width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+      </li>
+      <li>
+        <picture>
+          <source srcset="assets/gallery-14.webp" type="image/webp">
+          <img src="assets/gallery-14.jpg" alt="Three jars of Slifer Farm raw honey glowing amber under yellow lids"
+               width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+      </li>
+      <li>
+        <picture>
+          <source srcset="assets/gallery-03.webp" type="image/webp">
+          <img src="assets/gallery-03.jpg" alt="Two labeled glass jars of Slifer Farm raw local honey"
+               width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+      </li>
+      <li>
+        <picture>
+          <source srcset="assets/gallery-20.webp" type="image/webp">
+          <img src="assets/gallery-20.jpg" alt="Inside the Slifer Farm stand, with the welcome sign above stocked shelves"
+               width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+      </li>
+    </ul>
+
+    <p class="center" style="margin-top:1.25rem">
+      <a class="btn btn--ghost" href="gallery.html">See more photos from the farm</a>
+    </p>
+  </div>
+
+  <div class="divider divider--bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0 100V52c150 40 330 44 500 22s340-58 520-38 280 46 420 58v6Z" fill="#F3EADA"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     GIFTS BY OCCASION
+     ============================================================ -->
+<section class="section section--deep" id="occasions">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow">Gifts by Occasion</span>
+      <h2>Something for whoever you have in mind</h2>
+      <p class="lede">If you are standing at the shelf and not sure where to start, here is what tends to suit what.</p>
+    </div>
+
+    <div class="cards">
+
+      <article class="card reveal">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="14" y="5" width="20" height="8" rx="2"/>
+            <path d="M18 13v14c0 3.4-6 5-6 10a6 6 0 0 0 6 6h8a6 6 0 0 0 6-6c0-5-2-7-2-10V13"/>
+            <path d="M18 27h12" opacity=".5"/>
+          </svg>
+        </div>
+        <h3>Stocking Stuffers</h3>
+        <p>Small, flat and easy to wrap. A pair of earrings, a bar of luffa soap or a bottle of vanilla extract fills a stocking without any fuss at all.</p>
+        <ul class="tags"><li class="tag">Earrings</li><li class="tag">Luffa soap</li><li class="tag">Vanilla extract</li></ul>
+      </article>
+
+      <article class="card reveal" style="--delay:90ms">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M11 16h26l-2.6 24a4 4 0 0 1-4 3.4H17.6a4 4 0 0 1-4-3.4L11 16Z"/>
+            <path d="M17 16v-3a7 7 0 0 1 14 0v3"/>
+            <path d="M24 35c-4-2.6-6-4.8-6-7.4a3.4 3.4 0 0 1 6-2 3.4 3.4 0 0 1 6 2c0 2.6-2 4.8-6 7.4Z"/>
+          </svg>
+        </div>
+        <h3>Hostess &amp; Teacher Gifts</h3>
+        <p>For the neighbor who had you over for dinner, or the teacher you keep meaning to thank. A jar of honey with a photo card tucked alongside says it plainly.</p>
+        <ul class="tags"><li class="tag">Raw honey</li><li class="tag">Greeting cards</li><li class="tag">Luffa soap</li></ul>
+      </article>
+
+      <article class="card reveal" style="--delay:180ms">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="19" cy="29" r="10"/>
+            <circle cx="31" cy="29" r="10"/>
+            <path d="M31 19l-4-5 4-5 4 5-4 5Z"/>
+          </svg>
+        </div>
+        <h3>Wedding &amp; Shower Favors</h3>
+        <p>Small, simple and made by hand, which is what a favor wants to be. Luffa soaps and little jars of honey both look lovely set out in a row. If you need several, call first and we can tell you what is on the shelf.</p>
+        <ul class="tags"><li class="tag">Luffa soaps</li><li class="tag">Raw honey</li><li class="tag">Call ahead</li></ul>
+      </article>
+
+      <article class="card reveal" style="--delay:270ms">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 40C14 33 7 27.6 7 20.4A9.4 9.4 0 0 1 24 15a9.4 9.4 0 0 1 17 5.4C41 27.6 34 33 24 40Z"/>
+            <path d="M38 6v6M35 9h6" opacity=".6"/>
+          </svg>
+        </div>
+        <h3>Treat Yourself</h3>
+        <p>No occasion needed, and nobody is watching. A framed print for the hallway, a bar of soap for your own bathroom and a jar of honey for the cupboard.</p>
+        <ul class="tags"><li class="tag">Framed prints</li><li class="tag">Luffa soap</li><li class="tag">Raw honey</li></ul>
+      </article>
+
+    </div>
+
+    <aside class="note reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3v18M12 7 8 3M12 7l4-4M12 12l-5-3M12 12l5-3M12 17l-5 3M12 17l5 3"/>
+      </svg>
+      <p><strong>This is the shelf that carries the stand through winter.</strong> When the produce table rests, the honey, luffa soaps, photo greeting cards and vanilla extract stay exactly where they are, and the eggs keep coming as long as the hens are willing. Most of it is made by hand and one of a kind, so the shelf changes as things sell; if you see something you like, it is worth taking it there and then.</p>
+    </aside>
+  </div>
+
+  <div class="divider divider--bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0 100V38c200 46 400 56 600 32s400-70 600-50 180 48 240 58v22Z" fill="#2F5233"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     CLOSING BAND
+     ============================================================ -->
+<section class="section section--green" id="come-see">
+  <div class="wrap narrow center reveal">
+    <span class="eyebrow">Come and Have a Look</span>
+    <h2>The gift shelf is open every day</h2>
+    <p class="lede">It sits inside the stand, out of the weather, from 9 in the morning until 7 at night. Take what you like and leave your payment in the box, or send it over from your phone.</p>
+
+    <div class="band__actions">
+      <a class="btn btn--gold" href="https://www.google.com/maps/dir/?api=1&amp;destination=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 14 21l-2.4-7.6L4 11z"/></svg>
+        Get Directions
+      </a>
+      <a class="btn btn--onDark" href="whats-fresh.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-3.6 0-6-2.6-6-6.2C6 10.4 9.2 3 12 3s6 7.4 6 11.8C18 18.4 15.6 21 12 21Z"/></svg>
+        What&rsquo;s Fresh
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="footer__grid">
+
+      <div>
+        <a class="brand" href="#top" aria-label="Slifer Farm home">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21c-3.6 0-6-2.6-6-6.2C6 10.4 9.2 3 12 3s6 7.4 6 11.8C18 18.4 15.6 21 12 21Z"/>
+            </svg>
+          </span>
+          <span>Slifer Farm<small>Champaign, IL</small></span>
+        </a>
+        <p>A women-owned, family-run farm stand on the honor system. Fresh from our farm to your table, every day of the week.</p>
+      </div>
+
+      <div>
+        <h3>Visit</h3>
+        <ul>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">1085 County Road 2200 N<br>Champaign, IL 61822</a></li>
+          <li>Open daily, 9 AM &ndash; 7 PM</li>
+          <li><a href="tel:+12178989387">(217) 898-9387</a></li>
+          <li><a href="mailto:sliferfarmeggs@gmail.com">sliferfarmeggs@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="index.html#shop">What We Sell</a></li>
+          <li><a href="whats-fresh.html">What&rsquo;s Fresh</a></li>
+          <li><a href="gifts.html">Handmade Gifts</a></li>
+          <li><a href="gallery.html">Photo Gallery</a></li>
+          <li><a href="visit.html">Plan Your Visit</a></li>
+          <li><a href="index.html#honor">How It Works</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Follow</h3>
+        <ul>
+          <li><a href="https://www.facebook.com/SliferFarm" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/sliferfarm" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@sliferfarm5554" target="_blank" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bar">
+      <span>&copy; <span id="year">2026</span> Slifer Farm. All rights reserved.</span>
+      <span>Cash box &middot; Venmo &middot; Cash App &middot; Zelle</span>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<!-- ============================================================
+     STRUCTURED DATA
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sliferfarm.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Handmade Gifts", "item": "https://sliferfarm.com/gifts.html" }
+  ]
+}
+</script>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

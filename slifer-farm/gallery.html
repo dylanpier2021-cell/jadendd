@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2F5233">
+
+<title>Photo Gallery | Slifer Farm Stand, Champaign IL</title>
+<meta name="description" content="Photos from the Slifer Farm self-serve stand in Champaign, Illinois: fresh eggs, raw honey, cookies, berries, flowers and the hens behind it all.">
+<meta name="keywords" content="Slifer Farm photos, farm stand gallery Champaign IL, fresh eggs photos, raw honey Illinois, honor system farm stand">
+<meta name="author" content="Slifer Farm">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<link rel="canonical" href="https://sliferfarm.com/gallery.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Slifer Farm">
+<meta property="og:title" content="Photo Gallery | Slifer Farm Stand, Champaign IL">
+<meta property="og:description" content="A look around the Slifer Farm stand: eggs in the basket, honey from our own hives, cookies out of the oven, flowers in jars and the hens who keep us busy.">
+<meta property="og:url" content="https://sliferfarm.com/gallery.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sliferfarm.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Slifer Farm self-serve stand in Champaign, Illinois">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Photo Gallery | Slifer Farm Stand, Champaign IL">
+<meta name="twitter:description" content="Eggs, raw honey, cookies, berries and flowers from our self-serve stand in Champaign, Illinois. Open daily 9 AM to 7 PM.">
+<meta name="twitter:image" content="https://sliferfarm.com/assets/og-image.jpg">
+
+<!-- Geo -->
+<meta name="geo.region" content="US-IL">
+<meta name="geo.placename" content="Champaign, Illinois">
+
+<!-- Favicon: inline SVG egg-on-cream so there is no extra request.
+     Swap for a real farm logo mark when one exists. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F5233'/%3E%3Cellipse cx='32' cy='34' rx='16' ry='20' fill='%23FAF6EF'/%3E%3Ccircle cx='32' cy='34' r='6' fill='%23E8A93C'/%3E%3C/svg%3E">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+
+<link rel="stylesheet" href="assets/site.css">
+
+<style>
+/* ==========================================================================
+   GALLERY PAGE - local styles only. Everything else comes from site.css.
+   ========================================================================== */
+
+/* Compact page hero: shorter than the homepage hero, extra bottom room
+   so the curved divider never crowds the copy. */
+.pagehero{
+  padding-block:clamp(2.25rem,1.6rem + 2.6vw,3.75rem) clamp(5rem,3.5rem + 6vw,8rem);
+  background:
+    radial-gradient(900px 420px at 88% -12%, rgba(232,169,60,.24), transparent 62%),
+    radial-gradient(680px 400px at 2% 6%, rgba(67,112,74,.12), transparent 60%),
+    var(--cream);
+}
+.pagehero .badge{margin-top:1.75rem}
+
+/* ---------- photo grid ----------
+   Source files are only 206x206 px, so tiles are deliberately held small.
+   auto-fill at 190px inside a 1040px rail lands on ~195px tiles, and the
+   hard cap below keeps them under 260px on any viewport. */
+.shots{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+  gap:clamp(.7rem,.5rem + .7vw,1.1rem);
+  max-width:1040px;
+  margin-inline:auto;
+  justify-items:center;
+  list-style:none;
+  padding:0;
+}
+.shot{
+  width:100%;
+  /* 206px native source - hold tiles near 1:1 so they stay crisp */
+  max-width:220px;
+  aspect-ratio:1/1;
+  position:relative;
+  display:block;
+  padding:0;
+  overflow:hidden;
+  cursor:pointer;
+  background:var(--cream-deep);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-sm);
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease),
+             border-color .3s var(--ease);
+}
+.shot img{
+  width:100%;height:100%;
+  object-fit:cover;
+  transition:transform .45s var(--ease);
+}
+.shot__zoom{
+  position:absolute;inset:auto .55rem .55rem auto;
+  width:34px;height:34px;border-radius:50%;
+  display:grid;place-items:center;
+  background:var(--paper);color:var(--green-dark);
+  box-shadow:var(--shadow-sm);
+  opacity:0;transform:scale(.8);
+  transition:opacity .28s var(--ease), transform .28s var(--ease);
+}
+.shot__zoom svg{width:17px;height:17px}
+.shot:hover,
+.shot:focus-visible{
+  transform:translateY(-5px);
+  box-shadow:var(--shadow-lg);
+  border-color:var(--brown-soft);
+}
+.shot:hover img,
+.shot:focus-visible img{transform:scale(1.06)}
+.shot:hover .shot__zoom,
+.shot:focus-visible .shot__zoom{opacity:1;transform:none}
+
+/* ---------- lightbox ---------- */
+.lb{
+  position:fixed;inset:0;z-index:200;
+  display:grid;place-items:center;
+  padding:clamp(1rem,4vw,2.25rem);
+  opacity:0;
+  transition:opacity .28s var(--ease);
+}
+.lb[hidden]{display:none}
+.lb.is-open{opacity:1}
+
+.lb__scrim{
+  position:absolute;inset:0;
+  background:rgba(33,57,31,.9);
+  -webkit-backdrop-filter:blur(3px);
+  backdrop-filter:blur(3px);
+  border:0;padding:0;cursor:pointer;
+}
+.lb__panel{
+  position:relative;z-index:1;
+  width:min(420px,100%);
+  display:grid;gap:.9rem;justify-items:center;
+  transform:translateY(12px) scale(.985);
+  transition:transform .28s var(--ease);
+}
+.lb.is-open .lb__panel{transform:none}
+
+.lb__top{width:100%;display:flex;justify-content:flex-end}
+.lb__x,
+.lb__nav{
+  width:44px;height:44px;flex:none;
+  border-radius:50%;border:1px solid rgba(247,226,180,.3);
+  background:rgba(250,246,239,.1);color:var(--cream);
+  display:grid;place-items:center;cursor:pointer;
+  transition:background-color .2s var(--ease), color .2s var(--ease),
+             transform .2s var(--ease);
+}
+.lb__x svg,.lb__nav svg{width:20px;height:20px}
+.lb__x:hover,.lb__nav:hover{background:var(--cream);color:var(--green-dark);transform:translateY(-2px)}
+
+/* The originals are 206 px square, so the viewer is capped at 420 px.
+   The 60vh clamp keeps image, caption and controls on screen together. */
+.lb__fig{
+  width:min(100%,60vh);
+  background:var(--cream);
+  border-radius:var(--radius-lg);
+  overflow:hidden;
+  box-shadow:var(--shadow-lg);
+}
+.lb__fig img{
+  width:100%;height:auto;
+  aspect-ratio:1/1;object-fit:cover;
+  background:var(--cream-deep);
+}
+.lb__cap{
+  padding:.95rem 1.15rem 1.1rem;
+  font-size:.94rem;line-height:1.5;
+  color:#4F4B42;text-align:center;
+}
+.lb__bar{
+  width:min(100%,60vh);
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.lb__count{
+  font-size:.85rem;font-weight:600;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--gold-soft);
+}
+
+@media (max-width:480px){
+  .lb__panel{gap:.7rem}
+  .lb__cap{font-size:.9rem;padding:.8rem 1rem .95rem}
+}
+
+/* ---------- closing band ---------- */
+.cta__row{display:flex;flex-wrap:wrap;gap:.85rem;justify-content:center}
+
+@media (prefers-reduced-motion:reduce){
+  .lb,.lb__panel,.shot,.shot img,.shot__zoom{transition:none}
+  .lb__panel{transform:none}
+}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="#top" aria-label="Slifer Farm home">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21c-3.6 0-6-2.6-6-6.2C6 10.4 9.2 3 12 3s6 7.4 6 11.8C18 18.4 15.6 21 12 21Z"/>
+        </svg>
+      </span>
+      <span>Slifer Farm
+        <small>Champaign, IL</small>
+      </span>
+    </a>
+
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+      <span aria-hidden="true"></span>
+    </button>
+
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="index.html#shop">Shop</a>
+      <a href="whats-fresh.html">What&rsquo;s Fresh</a>
+      <a href="gifts.html">Gifts</a>
+      <a href="gallery.html" aria-current="page">Gallery</a>
+      <a href="visit.html">Visit</a>
+      <a class="nav__cta" href="https://www.google.com/maps/dir/?api=1&amp;destination=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">Get Directions</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================================================
+     PAGE HERO
+     ============================================================ -->
+<section class="section pagehero section--cream" id="top">
+  <div class="wrap narrow center">
+    <div class="reveal">
+      <span class="eyebrow">Photo Gallery</span>
+      <h1>A Look Around the Farm</h1>
+      <p class="lede" style="margin-inline:auto">Twenty pictures from the stand and the yard. Eggs still in the basket, honey off our own hives, cookies out of the oven, flowers from the patch, and the hens who keep us in eggs all year. Tap any photo to see it larger.</p>
+      <span class="badge badge--open"><span class="dot" aria-hidden="true"></span> Open Daily 9&nbsp;AM &ndash; 7&nbsp;PM, Self-Serve</span>
+    </div>
+  </div>
+
+  <div class="divider divider--bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0 100V44c180 34 360 50 540 34s360-62 540-52 240 44 360 60v14Z" fill="#FFFDF8"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     PHOTO GRID
+     ============================================================ -->
+<section class="section section--paper" id="photos">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow">From Our Own Camera</span>
+      <h2>Twenty photos from the stand</h2>
+      <p class="lede">Nothing staged and nothing borrowed. This is what the shelves, the yard and the birds actually look like through the year.</p>
+    </div>
+
+    <div class="shots" id="shots">
+
+      <button class="shot reveal" type="button" aria-haspopup="dialog" data-full="assets/gallery-01.jpg" data-cap="The stand on a summer morning, open sign out and the black-eyed Susans in bloom.">
+        <picture>
+          <source srcset="assets/gallery-01.webp" type="image/webp">
+          <img src="assets/gallery-01.jpg" alt="The gray self-serve Slifer Farm stand with its OPEN sign, a green lawn and yellow black-eyed Susans in front" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:55ms" aria-haspopup="dialog" data-full="assets/gallery-02.jpg" data-cap="A basket of eggs in blue, green, brown and cream, just as the hens gave them.">
+        <picture>
+          <source srcset="assets/gallery-02.webp" type="image/webp">
+          <img src="assets/gallery-02.jpg" alt="A woven basket heaped with multicolored blue, green, brown and cream eggs from the Slifer Farm hens" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:110ms" aria-haspopup="dialog" data-full="assets/gallery-03.jpg" data-cap="Raw honey from our own hives, in the farm's own labeled jars.">
+        <picture>
+          <source srcset="assets/gallery-03.webp" type="image/webp">
+          <img src="assets/gallery-03.jpg" alt="Two glass jars of raw honey carrying Slifer Farm labels" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:165ms" aria-haspopup="dialog" data-full="assets/gallery-04.jpg" data-cap="Chocolate chip cookies, still warm from the oven.">
+        <picture>
+          <source srcset="assets/gallery-04.webp" type="image/webp">
+          <img src="assets/gallery-04.jpg" alt="A close-up of fresh chocolate chip cookies resting on a cooling rack" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:220ms" aria-haspopup="dialog" data-full="assets/gallery-05.jpg" data-cap="Tomatoes picked ripe and tipped into the old enamel bowl.">
+        <picture>
+          <source srcset="assets/gallery-05.webp" type="image/webp">
+          <img src="assets/gallery-05.jpg" alt="Ripe red tomatoes gathered in a white enamel bowl at Slifer Farm" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" aria-haspopup="dialog" data-full="assets/gallery-06.jpg" data-cap="One of the girls out in the snow. The eggs carry on through winter.">
+        <picture>
+          <source srcset="assets/gallery-06.webp" type="image/webp">
+          <img src="assets/gallery-06.jpg" alt="A red-brown Slifer Farm hen standing in fresh snow" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:55ms" aria-haspopup="dialog" data-full="assets/gallery-07.jpg" data-cap="Raspberries and blackberries in cartons, ready on the shelf.">
+        <picture>
+          <source srcset="assets/gallery-07.webp" type="image/webp">
+          <img src="assets/gallery-07.jpg" alt="Cartons of raspberries and blackberries lined up on a wooden shelf at the Slifer Farm stand" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:110ms" aria-haspopup="dialog" data-full="assets/gallery-08.jpg" data-cap="Zinnia bouquets set in jars on the stand counter.">
+        <picture>
+          <source srcset="assets/gallery-08.webp" type="image/webp">
+          <img src="assets/gallery-08.jpg" alt="Bright zinnia bouquets standing in jars on the Slifer Farm stand counter" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:165ms" aria-haspopup="dialog" data-full="assets/gallery-09.jpg" data-cap="The honor system, written out on the chalkboard, with the Zelle code alongside.">
+        <picture>
+          <source srcset="assets/gallery-09.webp" type="image/webp">
+          <img src="assets/gallery-09.jpg" alt="A hand-lettered chalkboard honor system self-serve sign at Slifer Farm with a Zelle QR code" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:220ms" aria-haspopup="dialog" data-full="assets/gallery-10.jpg" data-cap="Sampler boxes tied with ribbon, made up for gifts.">
+        <picture>
+          <source srcset="assets/gallery-10.webp" type="image/webp">
+          <img src="assets/gallery-10.jpg" alt="Kraft paper sampler gift boxes tied with pink ribbon at Slifer Farm" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" aria-haspopup="dialog" data-full="assets/gallery-11.jpg" data-cap="A golden retriever keeping watch at the stand door.">
+        <picture>
+          <source srcset="assets/gallery-11.webp" type="image/webp">
+          <img src="assets/gallery-11.jpg" alt="A golden retriever in a bandana sitting at the open door of the Slifer Farm stand" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:55ms" aria-haspopup="dialog" data-full="assets/gallery-12.jpg" data-cap="The wooden stand with the OPEN flag flying and a golden retriever alongside.">
+        <picture>
+          <source srcset="assets/gallery-12.webp" type="image/webp">
+          <img src="assets/gallery-12.jpg" alt="The wooden Slifer Farm self-serve stand with an OPEN flag flying and a golden retriever beside it" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:110ms" aria-haspopup="dialog" data-full="assets/gallery-13.jpg" data-cap="Eggs laid out in a ring, every color the hens give us.">
+        <picture>
+          <source srcset="assets/gallery-13.webp" type="image/webp">
+          <img src="assets/gallery-13.jpg" alt="Multicolored eggs arranged in a ring around the Slifer Farm logo" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:165ms" aria-haspopup="dialog" data-full="assets/gallery-14.jpg" data-cap="Three jars of honey, amber right the way through.">
+        <picture>
+          <source srcset="assets/gallery-14.webp" type="image/webp">
+          <img src="assets/gallery-14.jpg" alt="Three Slifer Farm honey jars glowing amber under yellow lids" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:220ms" aria-haspopup="dialog" data-full="assets/gallery-15.jpg" data-cap="Cookies cooling on the wire rack.">
+        <picture>
+          <source srcset="assets/gallery-15.webp" type="image/webp">
+          <img src="assets/gallery-15.jpg" alt="Warm chocolate chip cookies cooling on a wire rack at Slifer Farm" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" aria-haspopup="dialog" data-full="assets/gallery-16.jpg" data-cap="Asparagus standing in bundles with the price up on the board.">
+        <picture>
+          <source srcset="assets/gallery-16.webp" type="image/webp">
+          <img src="assets/gallery-16.jpg" alt="Standing bundles of fresh asparagus beside a chalkboard price sign at the Slifer Farm stand" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:55ms" aria-haspopup="dialog" data-full="assets/gallery-17.jpg" data-cap="A chick finding its feet beside the purple foliage.">
+        <picture>
+          <source srcset="assets/gallery-17.webp" type="image/webp">
+          <img src="assets/gallery-17.jpg" alt="A fluffy yellow chick standing on stone beside purple foliage at Slifer Farm" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:110ms" aria-haspopup="dialog" data-full="assets/gallery-18.jpg" data-cap="A basket of ripe raspberries and blackberries.">
+        <picture>
+          <source srcset="assets/gallery-18.webp" type="image/webp">
+          <img src="assets/gallery-18.jpg" alt="A basket of ripe raspberries and blackberries picked at Slifer Farm" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:165ms" aria-haspopup="dialog" data-full="assets/gallery-19.jpg" data-cap="Zinnias and wildflowers in mason jars, lined up along the shelf.">
+        <picture>
+          <source srcset="assets/gallery-19.webp" type="image/webp">
+          <img src="assets/gallery-19.jpg" alt="Bright zinnia and wildflower bouquets in mason jars on the Slifer Farm stand shelf" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+      <button class="shot reveal" type="button" style="--delay:220ms" aria-haspopup="dialog" data-full="assets/gallery-20.jpg" data-cap="Inside the stand: the welcome sign, the kiosk, and everything on the honor system.">
+        <picture>
+          <source srcset="assets/gallery-20.webp" type="image/webp">
+          <img src="assets/gallery-20.jpg" alt="Inside the Slifer Farm stand, a welcome sign above the self-checkout kiosk" width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+        <span class="shot__zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6M11 8.5v5M8.5 11h5"/></svg></span>
+      </button>
+
+    </div>
+
+    <div class="note reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M4 8h3.2l1.6-2.4h6.4L16.8 8H20a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1Z"/>
+        <circle cx="12" cy="13.2" r="3.6"/>
+      </svg>
+      <p><strong>All our own photos.</strong> Every picture here comes straight from the Slifer Farm Facebook and Instagram pages, and more go up through the season as the shelves change. Follow along there to see what has just come in.</p>
+    </div>
+  </div>
+
+  <div class="divider divider--bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0 100V52c150 40 330 44 500 22s340-58 520-38 280 46 420 58v6Z" fill="#2F5233"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     CLOSING BAND
+     ============================================================ -->
+<section class="section section--green">
+  <div class="wrap narrow center">
+    <div class="head center reveal">
+      <span class="eyebrow">Come and See</span>
+      <h2>Better in person</h2>
+      <p class="lede">Photographs only go so far. The stand is open every day from 9 in the morning until 7 at night, and there is usually something on the shelf that was not there last week.</p>
+    </div>
+
+    <div class="cta__row reveal" style="--delay:90ms">
+      <a class="btn btn--gold" href="https://www.google.com/maps/dir/?api=1&amp;destination=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        Get Directions
+      </a>
+      <a class="btn btn--onDark" href="whats-fresh.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21c-4.4 0-8-3.3-8-7.6C4 8.6 8.4 3 12 3s8 5.6 8 10.4C20 17.7 16.4 21 12 21Z"/><path d="M12 21V9"/></svg>
+        What&rsquo;s Fresh
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     LIGHTBOX
+     ============================================================ -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <button class="lb__scrim" type="button" tabindex="-1" aria-hidden="true" data-close></button>
+
+  <div class="lb__panel">
+    <div class="lb__top">
+      <button class="lb__x" type="button" data-close aria-label="Close photo viewer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+
+    <figure class="lb__fig">
+      <!-- Seeded with photo 1 so the element is never an empty src (which
+           browsers resolve back to this page). show() overwrites both the
+           srcset and the src/alt the moment the viewer opens. -->
+      <picture>
+        <source id="lbWebp" srcset="assets/gallery-01.webp" type="image/webp">
+        <img id="lbImg" src="assets/gallery-01.jpg" alt="The gray self-serve Slifer Farm stand with its OPEN sign, a green lawn and yellow black-eyed Susans in front" width="206" height="206" loading="lazy" decoding="async">
+      </picture>
+      <figcaption class="lb__cap" id="lbCap" aria-live="polite"></figcaption>
+    </figure>
+
+    <div class="lb__bar">
+      <button class="lb__nav" type="button" data-dir="-1" aria-label="Previous photo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>
+      </button>
+      <p class="lb__count" id="lbCount"></p>
+      <button class="lb__nav" type="button" data-dir="1" aria-label="Next photo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 5 7 7-7 7"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="footer__grid">
+
+      <div>
+        <a class="brand" href="#top" aria-label="Slifer Farm home">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21c-3.6 0-6-2.6-6-6.2C6 10.4 9.2 3 12 3s6 7.4 6 11.8C18 18.4 15.6 21 12 21Z"/>
+            </svg>
+          </span>
+          <span>Slifer Farm<small>Champaign, IL</small></span>
+        </a>
+        <p>A women-owned, family-run farm stand on the honor system. Fresh from our farm to your table, every day of the week.</p>
+      </div>
+
+      <div>
+        <h3>Visit</h3>
+        <ul>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">1085 County Road 2200 N<br>Champaign, IL 61822</a></li>
+          <li>Open daily, 9 AM &ndash; 7 PM</li>
+          <li><a href="tel:+12178989387">(217) 898-9387</a></li>
+          <li><a href="mailto:sliferfarmeggs@gmail.com">sliferfarmeggs@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="index.html#shop">What We Sell</a></li>
+          <li><a href="whats-fresh.html">What&rsquo;s Fresh</a></li>
+          <li><a href="gifts.html">Handmade Gifts</a></li>
+          <li><a href="gallery.html">Photo Gallery</a></li>
+          <li><a href="visit.html">Plan Your Visit</a></li>
+          <li><a href="index.html#honor">How It Works</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Follow</h3>
+        <ul>
+          <li><a href="https://www.facebook.com/SliferFarm" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/sliferfarm" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@sliferfarm5554" target="_blank" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bar">
+      <span>&copy; <span id="year">2026</span> Slifer Farm. All rights reserved.</span>
+      <span>Cash box &middot; Venmo &middot; Cash App &middot; Zelle</span>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<!-- ============================================================
+     STRUCTURED DATA
+     ============================================================ -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+ {"@type":"ListItem","position":1,"name":"Home","item":"https://sliferfarm.com/"},
+ {"@type":"ListItem","position":2,"name":"Photo Gallery","item":"https://sliferfarm.com/gallery.html"}]}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ImageGallery",
+  "name": "Slifer Farm Photo Gallery",
+  "url": "https://sliferfarm.com/gallery.html",
+  "description": "Photographs of the Slifer Farm self-serve honor-system stand in Champaign, Illinois.",
+  "about": { "@type": "GroceryStore", "@id": "https://sliferfarm.com/#business", "name": "Slifer Farm" },
+  "image": [
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-01.jpg", "caption": "The gray self-serve Slifer Farm stand with its OPEN sign and black-eyed Susans" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-02.jpg", "caption": "A basket heaped with multicolored eggs from the Slifer Farm hens" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-03.jpg", "caption": "Two glass jars of raw honey with Slifer Farm labels" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-04.jpg", "caption": "Fresh chocolate chip cookies on a cooling rack" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-05.jpg", "caption": "Ripe red tomatoes in a white enamel bowl" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-06.jpg", "caption": "A red-brown Slifer Farm hen standing in fresh snow" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-07.jpg", "caption": "Cartons of raspberries and blackberries on a wooden shelf" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-08.jpg", "caption": "Zinnia bouquets in jars on the stand counter" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-09.jpg", "caption": "The hand-lettered honor system chalkboard with a Zelle code" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-10.jpg", "caption": "Kraft sampler gift boxes tied with pink ribbon" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-11.jpg", "caption": "A golden retriever at the open door of the Slifer Farm stand" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-12.jpg", "caption": "The wooden self-serve stand with the OPEN flag flying" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-13.jpg", "caption": "Multicolored eggs arranged in a ring around the Slifer Farm logo" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-14.jpg", "caption": "Three Slifer Farm honey jars glowing amber" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-15.jpg", "caption": "Warm chocolate chip cookies cooling on a wire rack" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-16.jpg", "caption": "Bundles of fresh asparagus with a chalkboard price sign" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-17.jpg", "caption": "A yellow chick beside purple foliage at Slifer Farm" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-18.jpg", "caption": "A basket of ripe raspberries and blackberries" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-19.jpg", "caption": "Zinnia and wildflower bouquets in mason jars on the stand shelf" },
+    { "@type": "ImageObject", "contentUrl": "https://sliferfarm.com/assets/gallery-20.jpg", "caption": "Inside the Slifer Farm stand with the welcome sign and self-checkout kiosk" }
+  ]
+}
+</script>
+
+<script src="assets/site.js" defer></script>
+
+<!-- ============================================================
+     LIGHTBOX BEHAVIOUR - page-local, no libraries.
+     ============================================================ -->
+<script>
+(function () {
+  "use strict";
+
+  var grid = document.getElementById("shots");
+  var lb   = document.getElementById("lightbox");
+  if (!grid || !lb) return;
+
+  var tiles  = Array.prototype.slice.call(grid.querySelectorAll(".shot"));
+  if (!tiles.length) return;
+
+  var img    = document.getElementById("lbImg");
+  var webp   = document.getElementById("lbWebp");
+  var cap    = document.getElementById("lbCap");
+  var count  = document.getElementById("lbCount");
+  var btnX   = lb.querySelector(".lb__x");
+  var btnPrev= lb.querySelector('.lb__nav[data-dir="-1"]');
+  var btnNext= lb.querySelector('.lb__nav[data-dir="1"]');
+  var focusables = [btnX, btnPrev, btnNext];
+
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  var index = 0;
+  var lastFocus = null;
+  var closeTimer = null;
+
+  function isReduced() {
+    return reduce.matches;
+  }
+
+  /* ---------- show one photo ---------- */
+  function show(i) {
+    index = (i % tiles.length + tiles.length) % tiles.length;
+
+    var tile  = tiles[index];
+    var jpg   = tile.getAttribute("data-full");
+    var thumb = tile.querySelector("img");
+
+    webp.srcset = jpg.replace(/\.jpg$/i, ".webp");
+    img.src     = jpg;
+    img.alt     = thumb ? thumb.getAttribute("alt") || "" : "";
+    cap.textContent   = tile.getAttribute("data-cap") || "";
+    count.textContent = (index + 1) + " of " + tiles.length;
+  }
+
+  /* ---------- open ---------- */
+  function open(i) {
+    if (closeTimer) { clearTimeout(closeTimer); closeTimer = null; }
+
+    lastFocus = document.activeElement;
+    show(i);
+
+    lb.hidden = false;
+
+    var bar = window.innerWidth - document.documentElement.clientWidth;
+    if (bar > 0) document.body.style.paddingRight = bar + "px";
+    document.body.style.overflow = "hidden";
+
+    if (isReduced()) {
+      lb.classList.add("is-open");
+    } else {
+      window.requestAnimationFrame(function () { lb.classList.add("is-open"); });
+    }
+
+    btnX.focus();
+    document.addEventListener("keydown", onKey, true);
+  }
+
+  /* ---------- close ---------- */
+  function close() {
+    if (lb.hidden) return;
+
+    document.removeEventListener("keydown", onKey, true);
+    lb.classList.remove("is-open");
+    document.body.style.overflow = "";
+    document.body.style.paddingRight = "";
+
+    var finish = function () { lb.hidden = true; closeTimer = null; };
+    if (isReduced()) finish();
+    else closeTimer = window.setTimeout(finish, 300);
+
+    if (lastFocus && typeof lastFocus.focus === "function") lastFocus.focus();
+    lastFocus = null;
+  }
+
+  /* ---------- keyboard: escape, arrows, focus trap ---------- */
+  function onKey(e) {
+    if (lb.hidden) return;
+
+    if (e.key === "Escape" || e.key === "Esc") {
+      e.preventDefault();
+      e.stopPropagation();
+      close();
+      return;
+    }
+    if (e.key === "ArrowLeft") { e.preventDefault(); show(index - 1); return; }
+    if (e.key === "ArrowRight") { e.preventDefault(); show(index + 1); return; }
+
+    if (e.key === "Tab") {
+      e.preventDefault();
+      var at = focusables.indexOf(document.activeElement);
+      var to;
+      if (e.shiftKey) to = at <= 0 ? focusables.length - 1 : at - 1;
+      else            to = (at < 0 || at === focusables.length - 1) ? 0 : at + 1;
+      focusables[to].focus();
+    }
+  }
+
+  /* ---------- wiring ---------- */
+  grid.addEventListener("click", function (e) {
+    var tile = e.target.closest(".shot");
+    if (!tile) return;
+    var i = tiles.indexOf(tile);
+    if (i > -1) open(i);
+  });
+
+  lb.addEventListener("click", function (e) {
+    if (e.target.closest("[data-close]")) { close(); return; }
+    var nav = e.target.closest(".lb__nav");
+    if (nav) show(index + Number(nav.getAttribute("data-dir")));
+  });
+})();
+</script>
+
+</body>
+</html>

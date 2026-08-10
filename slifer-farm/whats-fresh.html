@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2F5233">
+
+<title>Seasonal Produce &amp; Sweet Corn | Slifer Farm, Champaign IL</title>
+<meta name="description" content="Month by month, what is usually on the Slifer Farm stand in Champaign, Illinois: sweet corn, berries, tomatoes, flowers, plus eggs and raw honey all year.">
+<meta name="keywords" content="sweet corn Champaign, fresh eggs near me, seasonal produce Champaign IL, blackberries Champaign, farm stand Champaign IL, local honey Illinois, Slifer Farm">
+<meta name="author" content="Slifer Farm">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<link rel="canonical" href="https://sliferfarm.com/whats-fresh.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Slifer Farm">
+<meta property="og:title" content="What&rsquo;s Fresh at the Stand | Slifer Farm, Champaign IL">
+<meta property="og:description" content="A month-by-month look at what is usually on the stand: sweet corn, blackberries, tomatoes, plums and cut flowers, with fresh eggs and raw honey all year round.">
+<meta property="og:url" content="https://sliferfarm.com/whats-fresh.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sliferfarm.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Seasonal produce on the Slifer Farm self-serve stand in Champaign, Illinois">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="What&rsquo;s Fresh at the Stand | Slifer Farm, Champaign IL">
+<meta name="twitter:description" content="Sweet corn, berries, tomatoes and flowers as they come in, plus fresh eggs and raw local honey every month of the year.">
+<meta name="twitter:image" content="https://sliferfarm.com/assets/og-image.jpg">
+
+<!-- Geo -->
+<meta name="geo.region" content="US-IL">
+<meta name="geo.placename" content="Champaign, Illinois">
+
+<!-- Favicon: inline SVG egg-on-cream so there is no extra request. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F5233'/%3E%3Cellipse cx='32' cy='34' rx='16' ry='20' fill='%23FAF6EF'/%3E%3Ccircle cx='32' cy='34' r='6' fill='%23E8A93C'/%3E%3C/svg%3E">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+
+<link rel="stylesheet" href="assets/site.css">
+
+<!-- ============================================================
+     PAGE-SPECIFIC STYLES - the month-by-month calendar only.
+     Everything else comes from assets/site.css.
+     ============================================================ -->
+<style>
+/* Compact page hero */
+.pagehead{padding-block:clamp(2.75rem,2rem + 4vw,4.75rem) clamp(4.5rem,3.5rem + 6vw,7.5rem)}
+.pagehead h1{font-size:clamp(2.1rem,1.5rem + 3vw,3.6rem);margin-bottom:1rem}
+.pagehead .lede{margin-bottom:1.75rem}
+.pagehead .badge{margin-bottom:0}
+
+/* Category key */
+.key{
+  display:flex;flex-wrap:wrap;gap:.5rem .65rem;
+  margin:0 0 clamp(1.75rem,1.4rem + 1vw,2.5rem);
+  list-style:none;padding:0;
+}
+.key li{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.8rem;font-weight:600;color:var(--brown);
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--radius-pill);padding:.35rem .8rem;
+}
+
+/* Color pip shared by the key and every month list */
+.pip{
+  width:9px;height:9px;flex:none;border-radius:50%;
+  background:var(--pip,var(--brown-soft));
+  box-shadow:0 0 0 3px color-mix(in srgb, var(--pip,var(--brown-soft)) 22%, transparent);
+}
+.pip--staple{--pip:#43704A}
+.pip--produce{--pip:#E8A93C}
+.pip--fruit{--pip:#C8553F}
+.pip--flower{--pip:#D97A8E}
+.pip--gift{--pip:#8B6F47}
+
+/* Month grid */
+.months{
+  display:grid;gap:clamp(.9rem,.6rem + 1vw,1.35rem);
+  grid-template-columns:repeat(auto-fit,minmax(228px,1fr));
+}
+.month{
+  position:relative;display:flex;flex-direction:column;
+  background:var(--paper);border:1px solid var(--line);
+  border-radius:var(--radius);padding:1.4rem 1.35rem 1.3rem;
+  transition:transform .3s var(--ease), box-shadow .3s var(--ease),
+             border-color .3s var(--ease);
+}
+.month:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--brown-soft)}
+
+.month__top{
+  display:flex;align-items:baseline;justify-content:space-between;
+  gap:.75rem;border-bottom:1px solid var(--line);
+  padding-bottom:.7rem;margin-bottom:.85rem;
+}
+.month h3{font-size:1.22rem}
+.month__season{
+  font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--brown);white-space:nowrap;
+}
+.month--peak{background:linear-gradient(168deg,#FDF6E6,var(--paper) 62%);border-color:#EBD9AF}
+.month--peak .month__season{color:var(--gold-deep)}
+
+.month__list{list-style:none;padding:0;margin:0;display:grid;gap:.45rem}
+.month__list li{
+  display:flex;align-items:center;gap:.6rem;
+  font-size:.92rem;line-height:1.35;color:#4F4B42;
+}
+.month__note{
+  margin-top:auto;padding-top:.95rem;font-size:.82rem;
+  color:var(--muted);font-style:italic;line-height:1.45;
+}
+
+/* Year-round pair reads better as a two-up on wide screens */
+.cards--pair{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));max-width:840px;margin-inline:auto}
+
+.fresh__close p{max-width:52ch;margin-inline:auto}
+.fresh__actions{display:flex;flex-wrap:wrap;gap:.85rem;justify-content:center;margin-top:2rem}
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="#top" aria-label="Slifer Farm home">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21c-3.6 0-6-2.6-6-6.2C6 10.4 9.2 3 12 3s6 7.4 6 11.8C18 18.4 15.6 21 12 21Z"/>
+        </svg>
+      </span>
+      <span>Slifer Farm
+        <small>Champaign, IL</small>
+      </span>
+    </a>
+
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+      <span aria-hidden="true"></span>
+    </button>
+
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="index.html#shop">Shop</a>
+      <a href="whats-fresh.html" aria-current="page">What&rsquo;s Fresh</a>
+      <a href="gifts.html">Gifts</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="visit.html">Visit</a>
+      <a class="nav__cta" href="https://www.google.com/maps/dir/?api=1&amp;destination=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">Get Directions</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================================================
+     PAGE HERO
+     ============================================================ -->
+<section class="section section--cream pagehead" id="top">
+  <div class="wrap narrow center reveal">
+    <span class="eyebrow">What&rsquo;s Fresh</span>
+    <h1>What&rsquo;s Fresh at the Stand</h1>
+    <p class="lede">The stand follows the season rather than a shopping list. Eggs and honey are there every month of the year; everything else arrives when the garden, the bees and the weather agree on it.</p>
+    <span class="badge badge--open"><span class="dot" aria-hidden="true"></span> Open Daily 9&nbsp;AM &ndash; 7&nbsp;PM</span>
+  </div>
+
+  <div class="divider divider--bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0 100V44c180 34 360 50 540 34s360-62 540-52 240 44 360 60v14Z" fill="#FFFDF8"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     YEAR-ROUND
+     ============================================================ -->
+<section class="section section--paper" id="year-round">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow">Every Month</span>
+      <h2>Two things that never stop</h2>
+      <p class="lede">Whatever the calendar says, these two are waiting for you. Snow, heat or harvest, the cooler and the honey shelf stay stocked.</p>
+    </div>
+
+    <div class="cards cards--pair">
+
+      <article class="card reveal">
+        <div class="card__photo">
+          <picture>
+            <source srcset="assets/gallery-02.webp" type="image/webp">
+            <img src="assets/gallery-02.jpg" alt="Woven basket heaped with blue, green, brown and cream eggs from Slifer Farm"
+                 width="206" height="206" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 42c-6.6 0-11-4.8-11-11.4C8 22.4 13.9 8 19 8s11 14.4 11 22.6C30 37.2 25.6 42 19 42Z"/>
+            <path d="M33 40c-4.2 0-7-3-7-7.2 0-5.2 3.8-14.3 7-14.3s7 9.1 7 14.3c0 4.2-2.8 7.2-7 7.2Z" opacity=".55"/>
+          </svg>
+        </div>
+        <h3>Farm Fresh Eggs</h3>
+        <p>Gathered every morning and set straight in the cooler. The hens slow down a little in the deep cold and the very hottest weeks, so on a busy day the cartons can go early, but eggs are a year-round fixture at the stand.</p>
+        <ul class="tags"><li class="tag">Every month</li><li class="tag">Pasture-raised</li><li class="tag">Gathered daily</li></ul>
+      </article>
+
+      <article class="card reveal" style="--delay:90ms">
+        <div class="card__photo">
+          <picture>
+            <source srcset="assets/gallery-14.webp" type="image/webp">
+            <img src="assets/gallery-14.jpg" alt="Three jars of Slifer Farm raw honey glowing amber under yellow lids"
+                 width="206" height="206" loading="lazy" decoding="async">
+          </picture>
+        </div>
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6h12v5l4 5v22a4 4 0 0 1-4 4H18a4 4 0 0 1-4-4V16l4-5Z"/>
+            <path d="M14 22h20"/>
+            <path d="m24 25 3 1.8v3.4L24 32l-3-1.8v-3.4L24 25Z"/>
+            <path d="M16 3h16" opacity=".55"/>
+          </svg>
+        </div>
+        <h3>Raw Local Honey</h3>
+        <p>Our bees work the flowers a few hundred feet from the stand, and the honey is jarred raw, never heated or filtered thin. It is put up once the supers come off, then it carries us right through to the next season.</p>
+        <ul class="tags"><li class="tag">Every month</li><li class="tag">Our own hives</li><li class="tag">Raw &amp; unfiltered</li></ul>
+      </article>
+
+    </div>
+  </div>
+
+  <div class="divider divider--bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0 100V52c150 40 330 44 500 22s340-58 520-38 280 46 420 58v6Z" fill="#FAF6EF"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     MONTH BY MONTH
+     ============================================================ -->
+<section class="section section--cream" id="calendar">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow">Month by Month</span>
+      <h2>A rough guide to the growing year</h2>
+      <p class="lede">Central Illinois keeps its own schedule, so treat this as a guide rather than a promise. A cool spring pushes everything back two weeks; a warm one brings it early. Weather depending, here is roughly when things turn up.</p>
+    </div>
+
+    <ul class="key reveal" aria-label="What the colors mean">
+      <li><span class="pip pip--staple" aria-hidden="true"></span> Eggs, honey &amp; baking</li>
+      <li><span class="pip pip--produce" aria-hidden="true"></span> Vegetables</li>
+      <li><span class="pip pip--fruit" aria-hidden="true"></span> Fruit &amp; berries</li>
+      <li><span class="pip pip--flower" aria-hidden="true"></span> Flowers</li>
+      <li><span class="pip pip--gift" aria-hidden="true"></span> Handmade</li>
+    </ul>
+
+    <div class="months">
+
+      <article class="month reveal">
+        <div class="month__top">
+          <h3>January</h3>
+          <span class="month__season">Quiet</span>
+        </div>
+        <ul class="month__list">
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Farm fresh eggs</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Raw local honey</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Fresh-baked cookies</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Luffa soaps</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Photo greeting cards</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Vanilla extract</li>
+        </ul>
+        <p class="month__note">The produce table is resting. The handmade shelf carries the stand through winter.</p>
+      </article>
+
+      <article class="month reveal" style="--delay:60ms">
+        <div class="month__top">
+          <h3>February</h3>
+          <span class="month__season">Quiet</span>
+        </div>
+        <ul class="month__list">
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Farm fresh eggs</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Raw local honey</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Fresh-baked cookies</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Luffa soaps</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Photo greeting cards</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Vanilla extract</li>
+        </ul>
+        <p class="month__note">Much the same as January, though the hens usually pick up as the days stretch out.</p>
+      </article>
+
+      <article class="month reveal" style="--delay:120ms">
+        <div class="month__top">
+          <h3>March</h3>
+          <span class="month__season">Waking up</span>
+        </div>
+        <ul class="month__list">
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Farm fresh eggs</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Raw local honey</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Fresh-baked cookies</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Luffa soaps</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Photo greeting cards</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Vanilla extract</li>
+        </ul>
+        <p class="month__note">Nothing new on the table yet, but the beds are being turned over and the asparagus is thinking about it.</p>
+      </article>
+
+      <article class="month reveal" style="--delay:180ms">
+        <div class="month__top">
+          <h3>April</h3>
+          <span class="month__season">First cuttings</span>
+        </div>
+        <ul class="month__list">
+          <li><span class="pip pip--produce" aria-hidden="true"></span><span class="sr-only">Vegetables:</span>Asparagus, usually late in the month</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Farm fresh eggs</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Raw local honey</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Fresh-baked cookies</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Luffa soaps &amp; vanilla extract</li>
+        </ul>
+        <p class="month__note">Asparagus comes in a handful of spears at a time, so it does not sit around long.</p>
+      </article>
+
+      <article class="month reveal" style="--delay:240ms">
+        <div class="month__top">
+          <h3>May</h3>
+          <span class="month__season">Spring</span>
+        </div>
+        <ul class="month__list">
+          <li><span class="pip pip--produce" aria-hidden="true"></span><span class="sr-only">Vegetables:</span>Asparagus, at its best</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Eggs, honey &amp; cookies</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Luffa soaps &amp; vanilla extract</li>
+        </ul>
+        <p class="month__note">Asparagus hits its stride this month. The cutting season is short and weather dependent, so early in the day is your best bet.</p>
+      </article>
+
+      <article class="month reveal" style="--delay:300ms">
+        <div class="month__top">
+          <h3>June</h3>
+          <span class="month__season">Berries</span>
+        </div>
+        <ul class="month__list">
+          <li><span class="pip pip--fruit" aria-hidden="true"></span><span class="sr-only">Fruit and berries:</span>Gooseberries</li>
+          <li><span class="pip pip--fruit" aria-hidden="true"></span><span class="sr-only">Fruit and berries:</span>Currants</li>
+          <li><span class="pip pip--flower" aria-hidden="true"></span><span class="sr-only">Flowers:</span>Cut flowers begin</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Eggs, honey &amp; cookies</li>
+        </ul>
+        <p class="month__note">Gooseberries and currants are a June thing and a short one. They rarely last beyond the month.</p>
+      </article>
+
+      <article class="month month--peak reveal" style="--delay:360ms">
+        <div class="month__top">
+          <h3>July</h3>
+          <span class="month__season">Peak</span>
+        </div>
+        <ul class="month__list">
+          <li><span class="pip pip--produce" aria-hidden="true"></span><span class="sr-only">Vegetables:</span>Sweet corn</li>
+          <li><span class="pip pip--fruit" aria-hidden="true"></span><span class="sr-only">Fruit and berries:</span>Blackberries</li>
+          <li><span class="pip pip--produce" aria-hidden="true"></span><span class="sr-only">Vegetables:</span>Tomatoes</li>
+          <li><span class="pip pip--produce" aria-hidden="true"></span><span class="sr-only">Vegetables:</span>Peppers</li>
+          <li><span class="pip pip--flower" aria-hidden="true"></span><span class="sr-only">Flowers:</span>Cut flowers</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Eggs, honey &amp; cookies</li>
+        </ul>
+        <p class="month__note">The busiest table of the year. Sweet corn usually starts mid-July, weather depending.</p>
+      </article>
+
+      <article class="month month--peak reveal" style="--delay:420ms">
+        <div class="month__top">
+          <h3>August</h3>
+          <span class="month__season">Peak</span>
+        </div>
+        <ul class="month__list">
+          <li><span class="pip pip--produce" aria-hidden="true"></span><span class="sr-only">Vegetables:</span>Sweet corn</li>
+          <li><span class="pip pip--fruit" aria-hidden="true"></span><span class="sr-only">Fruit and berries:</span>Blackberries</li>
+          <li><span class="pip pip--fruit" aria-hidden="true"></span><span class="sr-only">Fruit and berries:</span>Plums</li>
+          <li><span class="pip pip--produce" aria-hidden="true"></span><span class="sr-only">Vegetables:</span>Tomatoes &amp; peppers</li>
+          <li><span class="pip pip--flower" aria-hidden="true"></span><span class="sr-only">Flowers:</span>Cut flowers</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Eggs, honey &amp; cookies</li>
+        </ul>
+        <p class="month__note">Everything at once, more or less. The tomatoes and peppers are usually at their best now.</p>
+      </article>
+
+      <article class="month reveal" style="--delay:480ms">
+        <div class="month__top">
+          <h3>September</h3>
+          <span class="month__season">Turning</span>
+        </div>
+        <ul class="month__list">
+          <li><span class="pip pip--produce" aria-hidden="true"></span><span class="sr-only">Vegetables:</span>Sweet corn, the last of it</li>
+          <li><span class="pip pip--produce" aria-hidden="true"></span><span class="sr-only">Vegetables:</span>Tomatoes &amp; peppers</li>
+          <li><span class="pip pip--fruit" aria-hidden="true"></span><span class="sr-only">Fruit and berries:</span>Plums, early in the month</li>
+          <li><span class="pip pip--flower" aria-hidden="true"></span><span class="sr-only">Flowers:</span>Cut flowers</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Eggs, honey &amp; cookies</li>
+        </ul>
+        <p class="month__note">Summer starts to wind down. The last of the sweet corn and the early plums usually finish before the month is out.</p>
+      </article>
+
+      <article class="month reveal" style="--delay:540ms">
+        <div class="month__top">
+          <h3>October</h3>
+          <span class="month__season">Autumn</span>
+        </div>
+        <ul class="month__list">
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Farm fresh eggs</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Raw local honey</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Fresh-baked cookies</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Luffa soaps &amp; vanilla extract</li>
+        </ul>
+        <p class="month__note">The first hard frost draws a line under the summer crops. Eggs, honey and the handmade shelf carry on as normal.</p>
+      </article>
+
+      <article class="month reveal" style="--delay:600ms">
+        <div class="month__top">
+          <h3>November</h3>
+          <span class="month__season">Winding down</span>
+        </div>
+        <ul class="month__list">
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Farm fresh eggs</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Raw local honey</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Fresh-baked cookies</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Luffa soaps</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Photo greeting cards</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Vanilla extract</li>
+        </ul>
+        <p class="month__note">The produce table goes quiet and the handmade shelf takes over for the winter.</p>
+      </article>
+
+      <article class="month reveal" style="--delay:660ms">
+        <div class="month__top">
+          <h3>December</h3>
+          <span class="month__season">Winter</span>
+        </div>
+        <ul class="month__list">
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Farm fresh eggs</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Raw local honey</li>
+          <li><span class="pip pip--staple" aria-hidden="true"></span><span class="sr-only">Eggs, honey and baking:</span>Fresh-baked cookies</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Luffa soaps</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Photo greeting cards</li>
+          <li><span class="pip pip--gift" aria-hidden="true"></span><span class="sr-only">Handmade:</span>Vanilla extract</li>
+        </ul>
+        <p class="month__note">A jar of honey and a bottle of vanilla make a tidy gift. The stand stays open, cold or not.</p>
+      </article>
+
+    </div>
+
+    <div class="reveal" style="margin-top:clamp(2rem,1.5rem + 2vw,3rem)">
+      <ul class="photo-band" aria-label="A few things that come and go through the year">
+        <li>
+          <picture>
+            <source srcset="assets/gallery-16.webp" type="image/webp">
+            <img src="assets/gallery-16.jpg" alt="Standing bundles of fresh asparagus with a chalkboard price sign at the Slifer Farm stand"
+                 width="206" height="206" loading="lazy" decoding="async">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source srcset="assets/gallery-07.webp" type="image/webp">
+            <img src="assets/gallery-07.jpg" alt="Cartons of raspberries and blackberries on a wooden shelf at the Slifer Farm stand"
+                 width="206" height="206" loading="lazy" decoding="async">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source srcset="assets/gallery-05.webp" type="image/webp">
+            <img src="assets/gallery-05.jpg" alt="Ripe red tomatoes in a white enamel bowl at Slifer Farm"
+                 width="206" height="206" loading="lazy" decoding="async">
+          </picture>
+        </li>
+        <li>
+          <picture>
+            <source srcset="assets/gallery-08.webp" type="image/webp">
+            <img src="assets/gallery-08.jpg" alt="Zinnia bouquets in jars on the Slifer Farm stand counter"
+                 width="206" height="206" loading="lazy" decoding="async">
+          </picture>
+        </li>
+      </ul>
+      <span class="photo-cap">A few of the things that come and go through the year.</span>
+    </div>
+
+    <aside class="note reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.9 8.9 0 0 1-3.9-.9L3 20.5l1.6-4.8A8.4 8.4 0 0 1 12 3.1a8.4 8.4 0 0 1 9 8.4Z"/>
+      </svg>
+      <p><strong>Stock changes daily.</strong> The quickest way to know what is out there right now is <a href="https://www.facebook.com/SliferFarm" target="_blank" rel="noopener">our Facebook page</a>, where we post the day&rsquo;s bake and fresh pickings as they go out.</p>
+    </aside>
+  </div>
+
+  <div class="divider divider--bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0 100V38c200 46 400 56 600 32s400-70 600-50 180 48 240 58v22Z" fill="#2F5233"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     CLOSING BAND
+     ============================================================ -->
+<section class="section section--green" id="come-see">
+  <div class="wrap narrow center fresh__close reveal">
+    <span class="eyebrow">Come and See</span>
+    <h2>The only reliable forecast is the stand itself</h2>
+    <p class="lede">We are on County Road 2200 N, open every day from 9 in the morning until 7 at night. Pull in, see what is out, and pay however suits you.</p>
+    <div class="fresh__actions">
+      <a class="btn btn--gold" href="https://www.google.com/maps/dir/?api=1&amp;destination=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 14 21l-2.4-7.6L4 11z"/></svg>
+        Get Directions
+      </a>
+      <a class="btn btn--onDark" href="visit.html">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+        Plan Your Visit
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="footer__grid">
+
+      <div>
+        <a class="brand" href="#top" aria-label="Slifer Farm home">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21c-3.6 0-6-2.6-6-6.2C6 10.4 9.2 3 12 3s6 7.4 6 11.8C18 18.4 15.6 21 12 21Z"/>
+            </svg>
+          </span>
+          <span>Slifer Farm<small>Champaign, IL</small></span>
+        </a>
+        <p>A women-owned, family-run farm stand on the honor system. Fresh from our farm to your table, every day of the week.</p>
+      </div>
+
+      <div>
+        <h3>Visit</h3>
+        <ul>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">1085 County Road 2200 N<br>Champaign, IL 61822</a></li>
+          <li>Open daily, 9 AM &ndash; 7 PM</li>
+          <li><a href="tel:+12178989387">(217) 898-9387</a></li>
+          <li><a href="mailto:sliferfarmeggs@gmail.com">sliferfarmeggs@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="index.html#shop">What We Sell</a></li>
+          <li><a href="whats-fresh.html">What&rsquo;s Fresh</a></li>
+          <li><a href="gifts.html">Handmade Gifts</a></li>
+          <li><a href="gallery.html">Photo Gallery</a></li>
+          <li><a href="visit.html">Plan Your Visit</a></li>
+          <li><a href="index.html#honor">How It Works</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Follow</h3>
+        <ul>
+          <li><a href="https://www.facebook.com/SliferFarm" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/sliferfarm" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@sliferfarm5554" target="_blank" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bar">
+      <span>&copy; <span id="year">2026</span> Slifer Farm. All rights reserved.</span>
+      <span>Cash box &middot; Venmo &middot; Cash App &middot; Zelle</span>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<!-- ============================================================
+     STRUCTURED DATA
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sliferfarm.com/" },
+    { "@type": "ListItem", "position": 2, "name": "What's Fresh", "item": "https://sliferfarm.com/whats-fresh.html" }
+  ]
+}
+</script>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>

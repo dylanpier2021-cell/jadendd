@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#2F5233">
+
+<title>Visit the Farm Stand | Hours &amp; Directions - Slifer Farm</title>
+<meta name="description" content="Plan your visit to Slifer Farm in Champaign, Illinois. Open daily 9 AM to 7 PM, self-serve honor system, plus directions, parking and common questions.">
+<meta name="keywords" content="Slifer Farm directions, farm stand hours Champaign IL, honor system farm stand, visit farm stand Champaign, County Road 2200 N">
+<meta name="author" content="Slifer Farm">
+<meta name="robots" content="index, follow, max-image-preview:large">
+
+<link rel="canonical" href="https://sliferfarm.com/visit.html">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Slifer Farm">
+<meta property="og:title" content="Visit the Farm Stand | Hours &amp; Directions - Slifer Farm">
+<meta property="og:description" content="Open daily 9 AM to 7 PM on County Road 2200 N, just north-west of Champaign. Directions, parking, payment and answers to the questions we get most.">
+<meta property="og:url" content="https://sliferfarm.com/visit.html">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://sliferfarm.com/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Slifer Farm self-serve stand in Champaign, Illinois">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Visit Slifer Farm | Hours, Directions &amp; Honor System">
+<meta name="twitter:description" content="Self-serve daily, 9 AM to 7 PM, at 1085 County Road 2200 N, Champaign, IL. Cash box, Venmo, Cash App and Zelle.">
+<meta name="twitter:image" content="https://sliferfarm.com/assets/og-image.jpg">
+
+<!-- Geo -->
+<meta name="geo.region" content="US-IL">
+<meta name="geo.placename" content="Champaign, Illinois">
+<!-- NOTE: coordinates below are approximate for 1085 County Road 2200 N.
+     Verify against the real Google Maps pin before launch and keep them in
+     sync with index.html. -->
+<meta name="geo.position" content="40.1895;-88.2795">
+<meta name="ICBM" content="40.1895, -88.2795">
+
+<!-- Favicon: inline SVG egg-on-cream so there is no extra request.
+     Swap for a real farm logo mark when one exists. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F5233'/%3E%3Cellipse cx='32' cy='34' rx='16' ry='20' fill='%23FAF6EF'/%3E%3Ccircle cx='32' cy='34' r='6' fill='%23E8A93C'/%3E%3C/svg%3E">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
+
+<link rel="stylesheet" href="assets/site.css">
+
+<!-- ============================================================
+     PAGE-LOCAL STYLES - visit.html only. Everything below leans on
+     the shared tokens in assets/site.css.
+     ============================================================ -->
+<style>
+  /* Compact page hero */
+  .pagehead{
+    overflow:hidden;
+    padding-block:clamp(2.5rem,2rem + 3vw,4.25rem) clamp(5rem,4rem + 5vw,8rem);
+    background:
+      radial-gradient(900px 420px at 88% -12%, rgba(232,169,60,.26), transparent 62%),
+      radial-gradient(620px 380px at 2% 4%, rgba(67,112,74,.12), transparent 60%),
+      var(--cream);
+  }
+  .pagehead h1{
+    font-size:clamp(2.3rem,1.6rem + 3.1vw,3.9rem);
+    margin-bottom:1rem;
+  }
+  .pagehead .lede{margin-bottom:1.6rem}
+  .pagehead__badges{display:flex;flex-wrap:wrap;gap:.6rem}
+
+  /* "Getting here" card link */
+  .card__link{
+    display:inline-flex;align-items:center;gap:.45rem;margin-top:1.15rem;
+    font-weight:600;font-size:.93rem;color:var(--green);text-decoration:none;
+  }
+  .card__link:hover{text-decoration:underline}
+  .card__link svg{width:17px;height:17px;flex:none;transition:transform .2s var(--ease)}
+  .card__link:hover svg{transform:translateX(3px)}
+
+  /* What to expect - reuses .info__row inside a wider grid */
+  .expect{
+    display:grid;gap:1rem;
+    grid-template-columns:repeat(auto-fit,minmax(288px,1fr));
+  }
+
+  /* FAQ accordion - native <details>, no JavaScript */
+  .faq{display:grid;gap:.85rem;max-width:820px;margin-inline:auto}
+  .faq details{
+    background:var(--cream);border:1px solid var(--line);
+    border-radius:var(--radius);overflow:hidden;
+    transition:border-color .25s var(--ease), box-shadow .25s var(--ease),
+               background-color .25s var(--ease);
+  }
+  .faq details[open]{
+    background:var(--paper);border-color:var(--brown-soft);box-shadow:var(--shadow-sm);
+  }
+  .faq summary{
+    display:flex;align-items:center;justify-content:space-between;gap:1rem;
+    padding:1.15rem 1.4rem;cursor:pointer;list-style:none;
+  }
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{
+    content:"";width:11px;height:11px;flex:none;
+    border-right:2.4px solid var(--gold-deep);
+    border-bottom:2.4px solid var(--gold-deep);
+    border-radius:2px;
+    transform:translateY(-3px) rotate(45deg);
+    transition:transform .25s var(--ease);
+  }
+  .faq details[open] summary::after{transform:translateY(2px) rotate(-135deg)}
+  .faq__q{
+    font-size:clamp(1.05rem,1rem + .3vw,1.2rem);
+    line-height:1.3;
+  }
+  .faq summary:hover .faq__q{color:var(--green)}
+  .faq__a{
+    padding:0 1.4rem 1.35rem;color:var(--muted);
+    font-size:.99rem;max-width:64ch;
+  }
+  .faq__a a{color:var(--green);font-weight:600}
+
+  .faq__foot{
+    margin-top:clamp(2rem,1.6rem + 1.5vw,2.75rem);
+    display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem;
+  }
+</style>
+</head>
+
+<body>
+<a class="skip" href="#main">Skip to main content</a>
+
+<!-- ============================================================
+     NAV
+     ============================================================ -->
+<header class="nav" id="nav">
+  <div class="wrap nav__inner">
+    <a class="brand" href="#top" aria-label="Slifer Farm home">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21c-3.6 0-6-2.6-6-6.2C6 10.4 9.2 3 12 3s6 7.4 6 11.8C18 18.4 15.6 21 12 21Z"/>
+        </svg>
+      </span>
+      <span>Slifer Farm
+        <small>Champaign, IL</small>
+      </span>
+    </a>
+
+    <button class="nav__toggle" id="navToggle" aria-expanded="false" aria-controls="navLinks" aria-label="Open menu">
+      <span aria-hidden="true"></span>
+    </button>
+
+    <nav class="nav__links" id="navLinks" aria-label="Primary">
+      <a href="index.html#shop">Shop</a>
+      <a href="whats-fresh.html">What&rsquo;s Fresh</a>
+      <a href="gifts.html">Gifts</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="visit.html" aria-current="page">Visit</a>
+      <a class="nav__cta" href="https://www.google.com/maps/dir/?api=1&amp;destination=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">Get Directions</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ============================================================
+     PAGE HERO
+     ============================================================ -->
+<section class="section section--cream pagehead" id="top">
+  <div class="wrap narrow">
+    <div class="reveal">
+      <span class="eyebrow">Come See Us</span>
+      <h1>Plan Your Visit</h1>
+      <p class="lede">The stand sits at the end of the drive on County Road 2200 N, just north-west of Champaign. Come any day of the week, take your time, and pay however suits you.</p>
+      <div class="pagehead__badges">
+        <span class="badge badge--open"><span class="dot" aria-hidden="true"></span> Open Daily 9&nbsp;AM &ndash; 7&nbsp;PM</span>
+        <span class="badge">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-4.35-7-9.5A4.5 4.5 0 0 1 12 8a4.5 4.5 0 0 1 7 3.5C19 16.65 12 21 12 21Z"/></svg>
+          Self-serve, honor system
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider divider--bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0 100V44c180 34 360 50 540 34s360-62 540-52 240 44 360 60v14Z" fill="#FFFDF8"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     FIND THE STAND - map + details
+     ============================================================ -->
+<section class="section section--paper" id="find-us">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Where We Are</span>
+      <h2>Find the stand</h2>
+      <p class="lede">Everything you need for the drive out, and how to reach us if you would rather ask first.</p>
+    </div>
+
+    <div class="visit">
+      <div class="info reveal">
+
+        <div class="info__row">
+          <span class="info__ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+          </span>
+          <div>
+            <h3>Address</h3>
+            <address style="font-style:normal">
+              <a href="https://www.google.com/maps/search/?api=1&amp;query=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">1085 County Road 2200 N<br>Champaign, IL 61822</a>
+            </address>
+          </div>
+        </div>
+
+        <div class="info__row">
+          <span class="info__ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.2l3.4 2"/></svg>
+          </span>
+          <div>
+            <h3>Hours</h3>
+            <p>Open daily, 9:00 AM &ndash; 7:00 PM<br>Self-serve, seven days a week</p>
+          </div>
+        </div>
+
+        <div class="info__row">
+          <span class="info__ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 17v2.6a1.9 1.9 0 0 1-2.1 1.9 18.8 18.8 0 0 1-8.2-2.9 18.5 18.5 0 0 1-5.7-5.7A18.8 18.8 0 0 1 2.6 4.6 1.9 1.9 0 0 1 4.5 2.5h2.6A1.9 1.9 0 0 1 9 4.2c.1 1 .3 1.9.7 2.8a1.9 1.9 0 0 1-.4 2L8.2 10.2a15 15 0 0 0 5.6 5.6l1.2-1.1a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.8.7a1.9 1.9 0 0 1 1.7 2Z"/></svg>
+          </span>
+          <div>
+            <h3>Phone</h3>
+            <p><a href="tel:+12178989387">(217) 898-9387</a></p>
+          </div>
+        </div>
+
+        <div class="info__row">
+          <span class="info__ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="m3 7 9 6 9-6"/></svg>
+          </span>
+          <div>
+            <h3>Email</h3>
+            <p><a href="mailto:sliferfarmeggs@gmail.com">sliferfarmeggs@gmail.com</a></p>
+          </div>
+        </div>
+
+        <div class="info__row">
+          <span class="info__ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="6.5" width="19" height="12" rx="2"/><path d="M2.5 10.5h19M9.5 15h5"/></svg>
+          </span>
+          <div>
+            <h3>Payment</h3>
+            <p>Cash box on site, or Venmo, Cash App and Zelle. Honor system, always.</p>
+          </div>
+        </div>
+
+        <div class="info__actions">
+          <a class="btn btn--primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 14 21l-2.4-7.6L4 11z"/></svg>
+            Get Directions
+          </a>
+          <a class="btn btn--ghost" href="tel:+12178989387">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.5 17v2.6a1.9 1.9 0 0 1-2.1 1.9 18.8 18.8 0 0 1-8.2-2.9 18.5 18.5 0 0 1-5.7-5.7A18.8 18.8 0 0 1 2.6 4.6 1.9 1.9 0 0 1 4.5 2.5h2.6A1.9 1.9 0 0 1 9 4.2c.1 1 .3 1.9.7 2.8a1.9 1.9 0 0 1-.4 2L8.2 10.2a15 15 0 0 0 5.6 5.6l1.2-1.1a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.8.7a1.9 1.9 0 0 1 1.7 2Z"/></svg>
+            Call Us
+          </a>
+        </div>
+
+        <figure class="reveal" style="margin:.35rem 0 0;max-width:480px">
+          <div class="photo-figure photo-figure--wide">
+            <picture>
+              <source srcset="assets/gallery-01.webp" type="image/webp">
+              <img src="assets/gallery-01.jpg" alt="The gray Slifer Farm self-serve stand with its OPEN sign, lawn and black-eyed susans alongside"
+                   width="206" height="206" loading="lazy" decoding="async">
+            </picture>
+          </div>
+          <figcaption class="photo-cap">The stand on County Road 2200 N.</figcaption>
+        </figure>
+      </div>
+
+      <!-- ============================================================
+           MAP - the iframe is injected by JS only when this block
+           scrolls into view, so it costs nothing on first paint.
+           ============================================================ -->
+      <div class="map reveal" style="--delay:120ms">
+        <div class="map__skeleton" id="mapMount"
+             data-src="https://www.google.com/maps?q=1085%20County%20Road%202200%20N%2C%20Champaign%2C%20IL%2061822&amp;output=embed">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m9 4 6 3 5.4-2.4a.6.6 0 0 1 .85.55v13.2a.6.6 0 0 1-.36.55L15 21l-6-3-5.4 2.4a.6.6 0 0 1-.85-.55V6.65a.6.6 0 0 1 .36-.55L9 4Z"/><path d="M9 4v14M15 7v14"/></svg>
+          <span>Loading the map&hellip;</span>
+          <noscript>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">Open 1085 County Road 2200 N in Google Maps</a>
+          </noscript>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider divider--bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0 100V52c150 40 330 44 500 22s340-58 520-38 280 46 420 58v6Z" fill="#FAF6EF"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     GETTING HERE
+     ============================================================ -->
+<section class="section section--cream" id="getting-here">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow">Getting Here</span>
+      <h2>A short run out of town</h2>
+      <p class="lede">We are out among the fields, so the drive is an easy one whichever way you come. Tap through on any card below for turn-by-turn directions from your side of the county.</p>
+    </div>
+
+    <div class="cards">
+
+      <article class="card reveal">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M7 33v-8l4.4-10.6A3.6 3.6 0 0 1 14.7 12h18.6a3.6 3.6 0 0 1 3.3 2.4L41 25v8a2 2 0 0 1-2 2H9a2 2 0 0 1-2-2Z"/>
+            <path d="M7 25h34"/>
+            <path d="M11 35v3M37 35v3"/>
+            <circle cx="14.5" cy="30" r="1.7" fill="currentColor" stroke="none"/>
+            <circle cx="33.5" cy="30" r="1.7" fill="currentColor" stroke="none"/>
+          </svg>
+        </div>
+        <h3>From Champaign</h3>
+        <p>Head north-west out of town and the road soon opens into farmland. County Road 2200 N runs across it, and the stand is at the end of our drive.</p>
+        <a class="card__link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Champaign,+IL&amp;destination=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">
+          Directions from Champaign
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+      </article>
+
+      <article class="card reveal" style="--delay:90ms">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 6 11 42M31 6l6 36"/>
+            <path d="M24 9v6M24 21v6M24 33v6"/>
+          </svg>
+        </div>
+        <h3>From Urbana</h3>
+        <p>You will cross through Champaign first, then carry on north-west until the houses give way to open fields and the county roads take over.</p>
+        <a class="card__link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Urbana,+IL&amp;destination=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">
+          Directions from Urbana
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+      </article>
+
+      <article class="card reveal" style="--delay:180ms">
+        <div class="card__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="24" r="18"/>
+            <path d="m31.5 16.5-4.2 10.8-10.8 4.2 4.2-10.8 10.8-4.2Z"/>
+            <path d="M24 4v3M24 41v3M4 24h3M41 24h3"/>
+          </svg>
+        </div>
+        <h3>From Mahomet</h3>
+        <p>A quiet, straightforward run on the county roads once you are clear of town. Set the address in your map app and it will handle the turns.</p>
+        <a class="card__link" href="https://www.google.com/maps/dir/?api=1&amp;origin=Mahomet,+IL&amp;destination=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">
+          Directions from Mahomet
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h13M13 6l6 6-6 6"/></svg>
+        </a>
+      </article>
+
+    </div>
+
+    <ul class="photo-band reveal" style="margin-top:clamp(2rem,1.6rem + 1.5vw,2.75rem)">
+      <li>
+        <picture>
+          <source srcset="assets/gallery-12.webp" type="image/webp">
+          <img src="assets/gallery-12.jpg" alt="The wooden Slifer Farm self-serve stand with its OPEN flag out and a golden retriever beside it"
+               width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+      </li>
+      <li>
+        <picture>
+          <source srcset="assets/gallery-20.webp" type="image/webp">
+          <img src="assets/gallery-20.jpg" alt="Inside the Slifer Farm stand, a welcome sign above the self-checkout kiosk"
+               width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+      </li>
+    </ul>
+    <p class="photo-cap reveal">Outside and in, so you know the place when you pull up.</p>
+
+    <aside class="note reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 21s7-5.4 7-11a7 7 0 1 0-14 0c0 5.6 7 11 7 11Z"/><circle cx="12" cy="10" r="2.6"/>
+      </svg>
+      <p><strong>Set the route before you leave.</strong> The address is 1085 County Road 2200 N, Champaign, IL 61822. Put that into your map app and it will bring you out to the drive.</p>
+    </aside>
+  </div>
+
+  <div class="divider divider--bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0 100V38c200 46 400 56 600 32s400-70 600-50 180 48 240 58v22Z" fill="#2F5233"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     HONOR SYSTEM
+     ============================================================ -->
+<section class="section section--green" id="honor">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow">How It Works</span>
+      <h2>How the honor system works</h2>
+      <p class="lede">There is no cashier and no line. The stand is open whether we are out there or not, and folks have never given us a reason to change that.</p>
+    </div>
+
+    <div class="steps">
+
+      <article class="step reveal">
+        <div class="step__num" aria-hidden="true">1</div>
+        <div class="step__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="7" y="11" width="34" height="30" rx="4"/>
+            <path d="M7 20h34M16 6v9M32 6v9"/>
+            <circle cx="24" cy="30" r="6"/>
+            <path d="M24 27v3.2l2.2 1.6"/>
+          </svg>
+        </div>
+        <h3>Stop by any day, 9 to 7</h3>
+        <p>Seven days a week, rain or shine. Pull in at the stand on County Road 2200 N and take as long as you like.</p>
+      </article>
+
+      <article class="step reveal" style="--delay:110ms">
+        <div class="step__num" aria-hidden="true">2</div>
+        <div class="step__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 20h36l-3.6 17.6A4 4 0 0 1 34.5 41h-21a4 4 0 0 1-3.9-3.4L6 20Z"/>
+            <path d="M15 20 21 8M33 20 27 8"/>
+            <path d="M16 27v7M24 27v7M32 27v7" opacity=".6"/>
+          </svg>
+        </div>
+        <h3>Pick out your goods</h3>
+        <p>Eggs in the cooler, honey and gifts on the shelves, produce and flowers out front. Prices are marked on everything.</p>
+      </article>
+
+      <article class="step reveal" style="--delay:220ms">
+        <div class="step__num" aria-hidden="true">3</div>
+        <div class="step__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="16" width="38" height="24" rx="4"/>
+            <path d="M5 24h38"/>
+            <path d="M20 32h8"/>
+            <path d="M14 16V9a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v7"/>
+          </svg>
+        </div>
+        <h3>Pay how it suits you</h3>
+        <p>Leave cash in the box, or send it over from your phone before you pull away. That is the whole checkout.</p>
+        <ul class="pay">
+          <li>Cash box</li><li>Venmo</li><li>Cash App</li><li>Zelle</li>
+        </ul>
+      </article>
+
+    </div>
+
+    <figure class="reveal" style="margin:clamp(2.5rem,2rem + 1.5vw,3.5rem) auto 0;max-width:230px">
+      <div class="photo-figure">
+        <picture>
+          <source srcset="assets/gallery-09.webp" type="image/webp">
+          <img src="assets/gallery-09.jpg" alt="Hand-lettered chalkboard self-serve sign at the Slifer Farm stand with a Zelle QR code"
+               width="206" height="206" loading="lazy" decoding="async">
+        </picture>
+      </div>
+      <figcaption class="photo-cap">The chalkboard at the stand: self-serve, with a Zelle code to pay from your phone.</figcaption>
+    </figure>
+
+    <div class="honor__foot reveal">
+      <p>&ldquo;Take what you need, leave what it&rsquo;s worth, and we&rsquo;ll see you next week.&rdquo;</p>
+    </div>
+  </div>
+
+  <div class="divider divider--bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0 100V46c170 38 350 48 520 28s360-64 540-46 240 46 380 56v16Z" fill="#F3EADA"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     PARKING + WHAT TO EXPECT
+     ============================================================ -->
+<section class="section section--deep" id="what-to-expect">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">When You Arrive</span>
+      <h2>Parking and what to expect</h2>
+      <p class="lede">Nothing complicated, but here is the shape of it so you know what you are pulling into.</p>
+    </div>
+
+    <div class="expect">
+
+      <div class="info__row reveal">
+        <span class="info__ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M4 16v-3l2-5.2A2 2 0 0 1 7.9 6.5h8.2A2 2 0 0 1 18 7.8L20 13v3a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1Z"/><path d="M4 13h16M6 17v1.5M18 17v1.5"/></svg>
+        </span>
+        <div>
+          <h3>Parking</h3>
+          <p>Pull in off the road at the stand and park where it suits you. It is a quiet stretch of County Road 2200 N, so there is no need to hurry.</p>
+        </div>
+      </div>
+
+      <div class="info__row reveal" style="--delay:80ms">
+        <span class="info__ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 17v2.6a1.9 1.9 0 0 1-2.1 1.9 18.8 18.8 0 0 1-8.2-2.9 18.5 18.5 0 0 1-5.7-5.7A18.8 18.8 0 0 1 2.6 4.6 1.9 1.9 0 0 1 4.5 2.5h2.6A1.9 1.9 0 0 1 9 4.2c.1 1 .3 1.9.7 2.8a1.9 1.9 0 0 1-.4 2L8.2 10.2a15 15 0 0 0 5.6 5.6l1.2-1.1a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.8.7a1.9 1.9 0 0 1 1.7 2Z"/></svg>
+        </span>
+        <div>
+          <h3>If you need a hand</h3>
+          <p>The stand looks after itself, but we are a phone call away on <a href="tel:+12178989387">(217) 898-9387</a> if there is anything you would rather ask before you set off.</p>
+        </div>
+      </div>
+
+      <div class="info__row reveal" style="--delay:160ms">
+        <span class="info__ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20c-3.2 0-5.4-2.3-5.4-5.6C6.6 10.6 9.5 4 12 4s5.4 6.6 5.4 10.4C17.4 17.7 15.2 20 12 20Z"/><path d="M10 13.5h.01M14 13.5h.01M10.6 16.4a2.4 2.4 0 0 0 2.8 0"/></svg>
+        </span>
+        <div>
+          <h3>Little ones</h3>
+          <p>Children are very welcome. The hens are usually out roaming the yard, and they tend to be the reason nobody wants to leave.</p>
+        </div>
+      </div>
+
+      <div class="info__row reveal" style="--delay:240ms">
+        <span class="info__ico" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21V11"/><path d="M12 11c0-3.3 2.2-6 5-6 0 3.3-2.2 6-5 6ZM12 11c0-3.3-2.2-6-5-6 0 3.3 2.2 6 5 6Z"/></svg>
+        </span>
+        <div>
+          <h3>Season to season</h3>
+          <p>The table shifts as the year turns. Come winter the produce rests and the stand leans on honey, luffa soaps, greeting cards and vanilla extract, while the eggs keep coming.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <aside class="note reveal">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3v18M12 7 8 3M12 7l4-4M12 12l-5-3M12 12l5-3M12 17l-5 3M12 17l5 3"/>
+      </svg>
+      <p><strong>It is a working farm,</strong> so things shift about a little from week to week. If you cannot find what you came for, send us a message and we will point you the right way.</p>
+    </aside>
+  </div>
+
+  <div class="divider divider--bottom" aria-hidden="true">
+    <svg viewBox="0 0 1440 100" preserveAspectRatio="none"><path d="M0 100V50c190 42 380 44 560 20s340-56 520-36 260 44 360 54v12Z" fill="#FFFDF8"/></svg>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ - native <details> accordion, no JavaScript.
+     Answers below are mirrored word for word in the FAQPage
+     JSON-LD at the foot of this page. Edit both together.
+     ============================================================ -->
+<section class="section section--paper" id="faq">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow">Good to Know</span>
+      <h2>Questions we get asked</h2>
+      <p class="lede">And if yours is not here, Facebook or email will always reach us.</p>
+    </div>
+
+    <div class="faq reveal">
+
+      <details>
+        <summary><h3 class="faq__q">Do I need cash?</h3></summary>
+        <div class="faq__a">
+          <p>No. There is a cash box at the stand if cash suits you, and we also take Venmo, Cash App and Zelle, so you can settle up from your phone before you pull away.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><h3 class="faq__q">Are you open on holidays?</h3></summary>
+        <div class="faq__a">
+          <p>The stand is self-serve and open daily, 9 AM to 7 PM. Around the major holidays it is worth sending us a message on Facebook to confirm before you make the trip.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><h3 class="faq__q">Can I order ahead or request something?</h3></summary>
+        <div class="faq__a">
+          <p>Yes, just ask. Send us a message on Facebook or email sliferfarmeggs@gmail.com and we will let you know what we can set aside for you.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><h3 class="faq__q">Is it kid-friendly?</h3></summary>
+        <div class="faq__a">
+          <p>Very much so. Little ones are welcome at the stand, and the hens are usually out in the yard, which tends to be the best part of the visit.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary><h3 class="faq__q">What if something is sold out?</h3></summary>
+        <div class="faq__a">
+          <p>Stock changes from day to day, so an empty shelf usually fills back up before long. Facebook has the day&rsquo;s update and is the quickest way to see what is on the stand before you set off.</p>
+        </div>
+      </details>
+
+    </div>
+
+    <div class="faq__foot reveal">
+      <a class="btn btn--primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 3 14 21l-2.4-7.6L4 11z"/></svg>
+        Get Directions
+      </a>
+      <a class="btn btn--ghost" href="https://www.facebook.com/SliferFarm" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9.1 23.7v-8H6.6v-3.7h2.5v-1.6c0-4.1 1.9-6 5.9-6 .4 0 1 .1 1.5.1.4.1.8.1 1.1.2v3.3c-.2 0-.4 0-.7-.1h-.7c-.7 0-1.3.1-1.7.3-.3.2-.5.4-.7.7-.3.4-.4 1-.4 1.7V12h3.9l-.4 2.1-.3 1.6h-3.2v8c5.9-.7 10.5-5.8 10.5-11.9C24 5.4 18.6 0 12 0S0 5.4 0 12c0 5.7 3.9 10.4 9.1 11.7Z"/></svg>
+        Ask on Facebook
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="footer" id="contact">
+  <div class="wrap">
+    <div class="footer__grid">
+
+      <div>
+        <a class="brand" href="#top" aria-label="Slifer Farm home">
+          <span class="brand__mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21c-3.6 0-6-2.6-6-6.2C6 10.4 9.2 3 12 3s6 7.4 6 11.8C18 18.4 15.6 21 12 21Z"/>
+            </svg>
+          </span>
+          <span>Slifer Farm<small>Champaign, IL</small></span>
+        </a>
+        <p>A women-owned, family-run farm stand on the honor system. Fresh from our farm to your table, every day of the week.</p>
+      </div>
+
+      <div>
+        <h3>Visit</h3>
+        <ul>
+          <li><a href="https://www.google.com/maps/search/?api=1&amp;query=1085+County+Road+2200+N%2C+Champaign%2C+IL+61822" target="_blank" rel="noopener">1085 County Road 2200 N<br>Champaign, IL 61822</a></li>
+          <li>Open daily, 9 AM &ndash; 7 PM</li>
+          <li><a href="tel:+12178989387">(217) 898-9387</a></li>
+          <li><a href="mailto:sliferfarmeggs@gmail.com">sliferfarmeggs@gmail.com</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Explore</h3>
+        <ul>
+          <li><a href="index.html#shop">What We Sell</a></li>
+          <li><a href="whats-fresh.html">What&rsquo;s Fresh</a></li>
+          <li><a href="gifts.html">Handmade Gifts</a></li>
+          <li><a href="gallery.html">Photo Gallery</a></li>
+          <li><a href="visit.html">Plan Your Visit</a></li>
+          <li><a href="index.html#honor">How It Works</a></li>
+          <li><a href="index.html#reviews">Reviews</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3>Follow</h3>
+        <ul>
+          <li><a href="https://www.facebook.com/SliferFarm" target="_blank" rel="noopener">Facebook</a></li>
+          <li><a href="https://www.instagram.com/sliferfarm" target="_blank" rel="noopener">Instagram</a></li>
+          <li><a href="https://www.tiktok.com/@sliferfarm5554" target="_blank" rel="noopener">TikTok</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer__bar">
+      <span>&copy; <span id="year">2026</span> Slifer Farm. All rights reserved.</span>
+      <span>Cash box &middot; Venmo &middot; Cash App &middot; Zelle</span>
+    </div>
+  </div>
+</footer>
+
+<button class="totop" id="toTop" type="button" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+</button>
+
+<!-- ============================================================
+     STRUCTURED DATA - breadcrumb
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://sliferfarm.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Plan Your Visit", "item": "https://sliferfarm.com/visit.html" }
+  ]
+}
+</script>
+
+<!-- ============================================================
+     STRUCTURED DATA - FAQ
+     Answer text matches the visible accordion word for word.
+     If you edit one, edit the other.
+     ============================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need cash?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. There is a cash box at the stand if cash suits you, and we also take Venmo, Cash App and Zelle, so you can settle up from your phone before you pull away."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are you open on holidays?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The stand is self-serve and open daily, 9 AM to 7 PM. Around the major holidays it is worth sending us a message on Facebook to confirm before you make the trip."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I order ahead or request something?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes, just ask. Send us a message on Facebook or email sliferfarmeggs@gmail.com and we will let you know what we can set aside for you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is it kid-friendly?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Very much so. Little ones are welcome at the stand, and the hens are usually out in the yard, which tends to be the best part of the visit."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if something is sold out?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Stock changes from day to day, so an empty shelf usually fills back up before long. Facebook has the day’s update and is the quickest way to see what is on the stand before you set off."
+      }
+    }
+  ]
+}
+</script>
+
+<script src="assets/site.js" defer></script>
+</body>
+</html>
