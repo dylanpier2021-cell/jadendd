@@ -8,7 +8,7 @@ HTML, CSS and JavaScript with **no build step** — clone it, open the
 
 | Folder | Client | Status |
 |---|---|---|
-| [`slifer-farm/`](slifer-farm/) | Slifer Farm — honor-system farm stand, Champaign, IL | Built, two items outstanding (see below) |
+| [`/`](.) | Slifer Farm — honor-system farm stand, Champaign, IL | Built, two items outstanding (see below) |
 
 ---
 
@@ -42,7 +42,9 @@ JSON-LD with verbatim review markup, `BreadcrumbList` on every subpage,
 
 ### Deploying
 
-No build. Point any static host at the `slifer-farm/` folder.
+No build. Point any static host at the repository root. Vercel needs no
+configuration: there is no framework and no build command, so it serves
+`index.html` from the root directly.
 
 Before it goes live, replace `https://sliferfarm.com/` with the real domain
 in: every `<link rel="canonical">`, the `og:url` and `og:image` tags, the
@@ -56,7 +58,7 @@ JSON-LD `url`/`image`/`@id` fields, `sitemap.xml`, and `robots.txt`.
    exist yet, so an `onerror` handler removes the element and a built-in SVG
    illustration shows instead — the page never renders a broken image. Drop
    the real files in at the sizes listed in
-   [`slifer-farm/assets/PHOTOS-NEEDED.md`](slifer-farm/assets/PHOTOS-NEEDED.md)
+   [`assets/PHOTOS-NEEDED.md`](assets/PHOTOS-NEEDED.md)
    and they appear automatically, no code change.
 
 2. **Verify the 5.0 rating.** `aggregateRating` claims 5.0 across 44 Google
